@@ -69,20 +69,20 @@ describe("About Objects", function () {
 
       var hasDetonator = "theDetonator" in megalomaniac;
 
-      expect(hasDetonator).toBe(undefined);
+      expect(hasDetonator).toBe(false);
     });
   });
 
   it("should know that properties can be added and deleted", function () {
     var megalomaniac = { mastermind : "Agent Smith", henchman: "Agent Smith" };
 
-    expect("secretary" in megalomaniac).toBe(undefined);
+    expect("secretary" in megalomaniac).toBe(false);
 
     megalomaniac.secretary = "Agent Smith";
-    expect("secretary" in megalomaniac).toBe("Agent Smith");
+    expect("secretary" in megalomaniac).toBe(true);
 
     delete megalomaniac.henchman;
-    expect("henchman" in megalomaniac).toBe("Agent Smith");
+    expect("henchman" in megalomaniac).toBe(true);
   });
 
 
@@ -96,8 +96,8 @@ describe("About Objects", function () {
       var colouredCircle = new Circle(5);
       colouredCircle.colour = "red";
 
-      expect(simpleCircle.colour).toBe(FILL_ME_IN);
-      expect(colouredCircle.colour).toBe(FILL_ME_IN);
+      expect(simpleCircle.colour).toBe(undefined);
+      expect(colouredCircle.colour).toBe("red");
 
       Circle.prototype.describe = function () {
         return "This circle has a radius of: " + this.radius;
